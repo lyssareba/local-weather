@@ -110,7 +110,9 @@ class Weather extends Component {
       return true; 
     else if(curTime[0] < 7 && curTime[8] ==='P')
       return true;
-    else if(curTime[0] === 1 && curTime[9] === 'P')
+    else if(curTime[0] === '1' && curTime[9] === 'P')
+      return true;
+    else if(curTime[0] === '1' && curTime[1] < 2 && curTime[9] === 'A')
       return true;
     else return false;
   }
@@ -179,9 +181,9 @@ class Weather extends Component {
         <p>{this.state.local.date} {this.state.local.timestamp}</p>
         <Row>
           <div id = 'temperatures'>
-          <p>Temp:  {this.state.local.temperature} <a href = "#" onClick={this.handleChange}>°{this.state.local.units}</a></p>
-          <p>High:  {this.state.local.tempLow}</p>
-          <p>Low: {this.state.local.tempHigh}</p>
+          <p>Temp:  {this.state.local.temperature} <button onClick={this.handleChange}>°{this.state.local.units}</button></p>
+          <p>High:  {this.state.local.tempHigh}</p>
+          <p>Low: {this.state.local.tempLow}</p>
           </div>
           <div id='weather-icon'>
           <ReactAnimatedWeather
@@ -200,8 +202,6 @@ class Weather extends Component {
           <p>{this.state.local.sunset}</p>
           </div>
         </Row>
-        <p></p>
-        <p></p>
       </div>
     : true;
   }
